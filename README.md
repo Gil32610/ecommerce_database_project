@@ -1,5 +1,5 @@
 # Projeto de Banco de Dados: Empresa
-Esse projeto tem o objetivo de simular uma plataforma de *e-commerce* de produtos diversos
+Esse projeto tem o objetivo de simular o banco de dados de uma plataforma de *e-commerce* de produtos diversos. Serão utilizados nesse esquema as entidades Cliente, ClienteEspecial, Funcionário, Produto e Venda.
 ## Integrantes:
 - [Gil Araújo](https://github.com/Gil32610) 
 - [Eduarda Pires](https://github.com/EduardaPires)
