@@ -2,6 +2,8 @@ CREATE DATABASE ecommerce_project;
 
 USE ecommerce_project;
 
+
+-- tabelas
 CREATE TABLE IF NOT EXISTS cliente(
 id_cliente INT AUTO_INCREMENT PRIMARY KEY,
 nome_cliente VARCHAR(50) NOT NULL,
@@ -42,6 +44,23 @@ id_cliente INT,
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
 data_venda DATE NOT NULL);
 
+
+-- usuários
+
+CREATE USER 'funcionário'@'localhost' IDENTIFIED BY '0417';
+
+
+INSERT INTO funcionario (nome_funcionario, idade_funcionario, sexo_funcionario, cargo_funcionario, salario_funcionario, data_nasc_funcionario)VALUES
+('Gabriel Constantino', 28, 'm', 'vendedor', 3000.0, '1996-05-30'),
+('Carolina Lacerda', 22, 'f', 'vendedor', 3200.5, '2001-07-21'),
+('Lucas Álvares', 18, 'm', 'vendedor', 2300.8, '2006-08-2'),
+('Adriana Mattos', 35, 'f', 'gerente', 5300.75, '1989-03-26'),
+('Matheus Jorge', 22, 'm', 'vendedor', 3150.5, '2001-09-2'),
+('Jaqueline Borba', 32, 'f', 'gerente', 5500.25, '1992-02-15');
+
+SELECT * FROM funcionario;
+
+CALL reajuste_salarial(20.0, 'vendedor'); 
 
 
 
