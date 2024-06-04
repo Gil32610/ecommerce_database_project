@@ -38,11 +38,14 @@ valor_produto DECIMAL(10,2));
 
 CREATE TABLE IF NOT EXISTS venda(
 id_venda INT AUTO_INCREMENT PRIMARY KEY,
+data_venda DATE NOT NULL,
 id_vendedor INT,
 FOREIGN KEY (id_vendedor) REFERENCES funcionario(id_funcionario),
 id_cliente INT,
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-data_venda DATE NOT NULL);
+id_produto INT NOT NULL,
+FOREIGN KEY (id_produto) REFERENCES Produto(id_produto));
+
 
 
 -- usuários
