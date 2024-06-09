@@ -184,7 +184,19 @@ INSERT INTO produto (nome_produto, quantidade_produto, descricao_produto, valor_
 ('Relógio Rolex', 20, 'Analógico, aço inoxidável', 5329.99),
 ('Óculos de Sol', 40, 'Proteção UV, polarizado', 49.99);
 
-SELECT * from cliente;
+INSERT INTO venda (data_venda, id_vendedor, id_cliente, id_produto) VALUES
+('2023-03-12', 1, 1, 1),
+('2023-03-12', 1, 1, 9),
+('2023-03-13', 4, 1, 13),
+('2023-03-15', 2, 1, 4),
+('2023-03-15', 2, 1, 5),
+('2023-03-16', 4, 1, 6),
+('2023-03-16', 1, 1, 7),
+('2023-03-16', 2, 1, 8),
+('2023-03-18', 4, 1, 9),
+('2023-03-18', 1, 1, 10);
+
+SELECT * FROM cliente_especial;
 
 
 
