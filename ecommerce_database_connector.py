@@ -9,6 +9,11 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 mycursor.execute("SELECT * FROM funcionario")
 
-for entries in mycursor:
-    print(entries)
-print(mydb)
+for column in mycursor.description:
+    print (column)
+
+
+
+
+
+
