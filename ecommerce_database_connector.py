@@ -11,6 +11,11 @@ mycursor.execute("SELECT * FROM funcionario")
 mycursor.executemany() #executa uma formula com um conjunto de entradas
 
 
-for entries in mycursor:
-    print(entries)
-print(mydb)
+for column in mycursor.description:
+    print (column)
+
+
+
+
+
+
