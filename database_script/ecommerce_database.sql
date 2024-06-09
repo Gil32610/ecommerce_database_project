@@ -162,11 +162,30 @@ INSERT INTO cliente(nome_cliente, sexo_cliente,idade_cliente, data_nasc_cliente)
 ("Trey Parker", 'm',54 , "1969-10-19"),
 ("Matt Stone", 'm',53 , "1971-05-26");
 
-SELECT * FROM FUNCIONARIO;
+INSERT INTO produto (nome_produto, quantidade_produto, descricao_produto, valor_produto) VALUES
+('Notebook', 10, 'Tela de 15 polegadas, 8GB RAM, 256GB SSD', 2999.99),
+('Smartphone', 25, 'Tela de 5.5 polegadas, 4GB RAM, 64GB armazenamento', 1299.99),
+('Fones de Ouvido', 50, 'Sem fio, com cancelamento de ruído', 899.99),
+('Video-game', 15, 'Resolução 4K, 1TB armazenamento', 4399.99),
+('Smartwatch', 30, 'Rastreamento fitness, monitor de batimentos cardíacos', 2149.99),
+('Liquidificador', 20, '700W, jarra de vidro de 1.5L', 49.99),
+('Bule Elétrica', 35, 'Capacidade de 1.7L, aço inoxidável', 29.99),
+('Micro-ondas', 10, '900W, capacidade de 25L', 99.99),
+('Aspirador de Pó', 12, 'Sem fio, autonomia de 60 minutos', 649.99),
+('Geladeira Duas Portas', 5, 'Capacidade de 300L, eficiente em energia', 2499.99),
+('Cadeira de Escritório', 40, 'Ergonômica, altura ajustável', 89.99),
+('Mesa de Jantar', 7, 'Para 6 pessoas, acabamento em madeira', 299.99),
+('Sofá', 8, 'Para 3 pessoas, estofado em tecido', 1499.99),
+('Estante de Livros', 20, '5 prateleiras, de madeira', 349.99),
+('Camisa', 100, '100% algodão, cores variadas', 79.99),
+('Calça Jeans', 50, 'Corte slim, jeans azul', 339.99),
+('Tênis', 30, 'Confortável, unissex', 459.99),
+('Mochila', 25, 'Resistente à água, capacidade de 20L', 334.99),
+('Relógio Rolex', 20, 'Analógico, aço inoxidável', 5329.99),
+('Óculos de Sol', 40, 'Proteção UV, polarizado', 49.99);
 
-SELECT * FROM CLIENTE;
+SELECT * from cliente;
 
-CALL reajuste_salarial(20.0, 'vendedor'); 
 
 
 
