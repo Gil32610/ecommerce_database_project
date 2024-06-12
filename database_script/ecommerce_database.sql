@@ -1,8 +1,6 @@
-CREATE DATABASE ecommerce_project;
+CREATE DATABASE IF NOT EXISTS ecommerce_project;
 
 USE ecommerce_project;
-
-
 -- tabelas
 CREATE TABLE IF NOT EXISTS cliente(
 id_cliente INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,6 +27,15 @@ cargo_funcionario VARCHAR(15) CHECK(cargo_funcionario='gerente' OR cargo_funcion
 salario_funcionario DECIMAL(10,2),
 data_nasc_funcionario DATE NOT NULL);
 
+CREATE TABLE IF NOT EXISTS funcionario_especial(
+	id_funcionario_especial INT PRIMARY KEY,
+    aumento DECIMAL(10,2),
+    FOREIGN KEY (id_funcionario_especial) REFERENCES funcionario(id_funcionario));
+    
+CREATE TABLE IF NOT EXISTS LogMensagens (
+    mensagem TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS produto(
 id_produto INT PRIMARY KEY AUTO_INCREMENT,
 nome_produto VARCHAR(25) NOT NULL,
@@ -50,7 +57,7 @@ FOREIGN KEY (id_produto) REFERENCES Produto(id_produto));
 
 -- usuários
 
-CREATE USER 'funcionário'@'localhost' IDENTIFIED BY '0417';
+-- CREATE USER 'funcionário'@'localhost' IDENTIFIED BY '0417';
 
 
 INSERT INTO funcionario (nome_funcionario, idade_funcionario, sexo_funcionario, cargo_funcionario, salario_funcionario, data_nasc_funcionario)VALUES
@@ -166,7 +173,13 @@ SELECT * FROM FUNCIONARIO;
 
 SELECT * FROM CLIENTE;
 
-CALL reajuste_salarial(20.0, 'vendedor'); 
+SELECT * FROM LogMensagens;
+
+-- CALL reajuste_salarial(20.0, 'vendedor'); 
+
+USE ecommerce_project;
+CALL SorteioCliente();
+CALL EstatisticasVendas();
 
 
 
