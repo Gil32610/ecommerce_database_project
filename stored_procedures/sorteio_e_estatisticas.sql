@@ -2,23 +2,32 @@ DELIMITER //
 
 CREATE PROCEDURE SorteioCliente()
 BEGIN
+    DECLARE ClienteEspecialID INT;
     DECLARE ClienteID INT;
-    DECLARE ClienteEspecial INT;
     DECLARE Voucher DECIMAL(10,2);
     
-    SET ClienteEspecial = (SELECT id_cliente_especial FROM ClienteEspecial ORDER BY RAND() LIMIT 1);
+    -- Tenta selecionar aleatoriamente um cliente especial
+    SET ClienteEspecialID = (SELECT id_cliente_especial FROM cliente_especial ORDER BY RAND() LIMIT 1);
     
-    IF ClienteEspecial IS NOT NULL THEN
-        SET Voucher = 200.00;
-        SELECT id_cliente_especial, nome_cliente_especial, 'Voucher' AS TipoVoucher, Voucher AS Valor
-        FROM ClienteEspecial
-        WHERE id_cliente_especial = ClienteEspecial;
-    ELSE
-        SET ClienteID = (SELECT id_cliente FROM Cliente ORDER BY RAND() LIMIT 1);
+    IF ClienteEspecialID IS NULL THEN
+        -- Se não encontrar um cliente especial, seleciona aleatoriamente um cliente comum
+        SET ClienteID = (SELECT id_cliente FROM cliente ORDER BY RAND() LIMIT 1);
+        
+        -- Define o valor do voucher como 100.00
         SET Voucher = 100.00;
+        
+        -- Exibe os detalhes do cliente comum sorteado junto com o valor do voucher
         SELECT id_cliente, nome_cliente, 'Voucher' AS TipoVoucher, Voucher AS Valor
-        FROM Cliente
+        FROM cliente
         WHERE id_cliente = ClienteID;
+    ELSE
+        -- Se encontrar um cliente especial, define o valor do voucher como 200.00
+        SET Voucher = 200.00;
+        
+        -- Exibe os detalhes do cliente especial sorteado junto com o valor do voucher
+        SELECT id_cliente_especial AS id_cliente, nome_cliente_especial AS nome_cliente, 'Voucher' AS TipoVoucher, Voucher AS Valor
+        FROM cliente_especial
+        WHERE id_cliente_especial = ClienteEspecialID;
     END IF;
 END;
 
