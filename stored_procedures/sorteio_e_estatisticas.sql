@@ -2,36 +2,31 @@ DELIMITER //
 
 CREATE PROCEDURE SorteioCliente()
 BEGIN
-    DECLARE ClienteEspecialID INT;
-    DECLARE ClienteID INT;
+    DECLARE id_do_cliente INT;
     DECLARE Voucher DECIMAL(10,2);
+    DECLARE cliente_especial_count INT;
+    DECLARE cliente_nome VARCHAR(100); -- Variável para armazenar o nome do cliente
     
-    -- Tenta selecionar aleatoriamente um cliente especial
-    SET ClienteEspecialID = (SELECT id_cliente_especial FROM cliente_especial ORDER BY RAND() LIMIT 1);
+    -- Seleciona aleatoriamente um id de cliente
+    SET id_do_cliente = (SELECT id_cliente FROM cliente ORDER BY RAND() LIMIT 1);
     
-    IF ClienteEspecialID IS NULL THEN
-        -- Se não encontrar um cliente especial, seleciona aleatoriamente um cliente comum
-        SET ClienteID = (SELECT id_cliente FROM cliente ORDER BY RAND() LIMIT 1);
-        
-        -- Define o valor do voucher como 100.00
-        SET Voucher = 100.00;
-        
-        -- Exibe os detalhes do cliente comum sorteado junto com o valor do voucher
-        SELECT id_cliente, nome_cliente, 'Voucher' AS TipoVoucher, Voucher AS Valor
-        FROM cliente
-        WHERE id_cliente = ClienteID;
-    ELSE
-        -- Se encontrar um cliente especial, define o valor do voucher como 200.00
+    -- Verifica se o cliente selecionado é um cliente especial
+    SET cliente_especial_count = (SELECT COUNT(*) FROM cliente_especial WHERE id_cliente = id_do_cliente);
+    
+    IF cliente_especial_count > 0 THEN
+        -- Cliente especial
         SET Voucher = 200.00;
-        
-        -- Exibe os detalhes do cliente especial sorteado junto com o valor do voucher
-        SELECT id_cliente_especial AS id_cliente, nome_cliente_especial AS nome_cliente, 'Voucher' AS TipoVoucher, Voucher AS Valor
-        FROM cliente_especial
-        WHERE id_cliente_especial = ClienteEspecialID;
+        SELECT nome_cliente_especial INTO cliente_nome FROM cliente_especial WHERE id_cliente = id_do_cliente;
+    ELSE
+        -- Cliente normal
+        SET Voucher = 100.00;
+        SELECT nome_cliente INTO cliente_nome FROM cliente WHERE id_cliente = id_do_cliente;
     END IF;
-END;
-
-//
+    
+    -- Retorna o nome do cliente sorteado e o valor do voucher
+    SELECT cliente_nome AS NomeCliente, Voucher AS ValorVoucher;
+    
+END //
 
 DELIMITER ;
 
