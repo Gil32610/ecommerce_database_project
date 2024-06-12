@@ -196,9 +196,47 @@ INSERT INTO venda (data_venda, id_vendedor, id_cliente, id_produto) VALUES
 ('2023-03-18', 4, 1, 9),
 ('2023-03-18', 1, 1, 10);
 
-SELECT * FROM cliente_especial;
+INSERT INTO venda (data_venda, id_vendedor, id_cliente, id_produto) VALUES
+('2023-04-10', 1, 1, 1),
+('2023-04-10', 1, 1, 1),
+('2023-04-10', 4, 1, 1),
+('2023-04-15', 2, 1, 8),
+('2023-04-15', 2, 1, 8),
+('2023-04-15', 4, 1, 3),
+('2023-04-16', 1, 1, 3),
+('2023-04-16', 2, 1, 8),
+('2023-04-25', 4, 1, 10),
+('2023-04-25', 1, 1, 10);
 
+SELECT * FROM FUNCIONARIO;
 
+call month_max_sales_less_sold_product;
+
+call reajuste_salarial(10.0, 'CEO');
+
+INSERT INTO cliente_especial (nome_cliente_especial, sexo_cliente_especial, idade_cliente_especial, id_cliente, cashback_cliente_especial) VALUES
+    ('João Silva', 'm', 30, 1, 50.00),
+    ('Maria Oliveira', 'f', 25, 2, 45.00),
+    ('Pedro Almeida', 'o', 40, 3, 55.00),
+    ('Ana Santos', 'm', 35, 4, 60.00),
+    ('Fernanda Costa', 'f', 28, 5, 40.00),
+    ('Rafael Pereira', 'o', 45, 6, 70.00),
+    ('Mariana Ferreira', 'm', 32, 7, 48.00),
+    ('Carlos Lima', 'f', 27, 8, 42.00),
+    ('Aline Souza', 'o', 38, 9, 58.00),
+    ('Luiz Rodrigues', 'm', 33, 10, 52.00),
+    ('Patrícia Gonçalves', 'f', 26, 11, 44.00),
+    ('André Martins', 'o', 42, 12, 63.00),
+    ('Vanessa Pereira', 'm', 31, 13, 47.00),
+    ('Ricardo Alves', 'f', 29, 14, 38.00),
+    ('Carolina Silva', 'o', 36, 15, 67.00),
+    ('Daniel Santos', 'm', 34, 16, 55.00),
+    ('Camila Oliveira', 'f', 31, 17, 42.00),
+    ('Gabriel Costa', 'o', 39, 18, 60.00),
+    ('Isabela Lima', 'm', 32, 19, 49.00),
+    ('Juliana Rodrigues', 'f', 30, 20, 45.00);
+    
+    
 
 
 
