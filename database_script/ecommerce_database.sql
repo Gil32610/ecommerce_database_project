@@ -180,7 +180,7 @@ SELECT * FROM LogMensagens;
 USE ecommerce_project;
 CALL SorteioCliente();
 CALL EstatisticasVendas();
-
+call month_max_sales_less_sold_product;
 
 
 
